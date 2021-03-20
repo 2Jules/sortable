@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sortable</title>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <style>
+  #sortable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
+  #sortable li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.4em; height: 18px; background: grey; 
+  cursor: -webkit-grab; cursor: grab;}
+  #sortable li span { position: absolute; margin-left: -1.3em; }
+  #submit {
+  
+  border-radius: 5px;
+  margin-top: 30px;
+  padding: 10px;
+  width: 120px;
+  background: #33c;
+  color: #fff;
+  cursor: -webkit-grab; cursor: grab;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="./jquery.ui.touch-punch.min.js"></script> 
+  <script>
+  $( function() {
+    $( "#sortable" ).sortable();
+    $( "#sortable" ).disableSelection();
+	$("#submit").click(function() {
+		var order = [];
+		$("#sortable li").each(function(index) {
+			var dataId = parseInt($(this).attr("data-id"));
+			order.push(dataId);
+		});
+		
+		console.log(order);
+	});
+  } );
+  </script>
+</head>
+<body>
+ 
+<ul id="sortable">
+  <li class="ui-state-default" data-id="1"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Oefening 1</li>
+  <li class="ui-state-default" data-id="2"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Oefening 2</li>
+  <li class="ui-state-default" data-id="3"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Oefening 3</li>
+  <li class="ui-state-default" data-id="4"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Oefening 4</li>
+  <li class="ui-state-default" data-id="5"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Oefening 5</li>
+  <li class="ui-state-default" data-id="6"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Oefening 6</li>
+  <li class="ui-state-default" data-id="7"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Oefening 7</li>
+</ul>
+ 
+ <div id="submit">
+	Print naar console
+ </div>
+</body>
+</html>
